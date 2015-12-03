@@ -1,0 +1,34 @@
+{
+  "name": "Avianis Trip Data",
+  "author": {
+    "name": "Chris Patten",
+    "email": "chris@magellanjets.com"
+  },
+  "parameters": [
+    {
+      "name": "trip_number_field",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "api_token",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "departure_date_field",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "arrival_date_field",
+      "type": "text",
+      "required": true
+    }
+  ],
+  "defaultLocale": "en",
+  "private": false,
+  "location": ["ticket_sidebar", "new_ticket_sidebar"],
+  "version": "0.1",
+  "frameworkVersion": "1.0"
+}

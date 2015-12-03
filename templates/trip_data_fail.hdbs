@@ -1,0 +1,6 @@
+{{#if notFound }}
+<div class="alert alert-danger">Trip Not Found!</div>
+{{else}}
+<div class="alert alert-danger">Ajax Error!</div>
+<pre>{{statusText}}</pre>
+{{/if}}

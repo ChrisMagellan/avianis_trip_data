@@ -1,0 +1,19 @@
+.avi-trip-number {
+	line-height: 40%;
+}
+.avi-aircraft {
+	font-size: 150%;
+}
+.avi-operator {
+	font-size: 150%;
+}
+.avi-client {
+	font-size: 180%;
+	line-height: 110%;
+}
+.avi-itinerary {
+	margin-top: 20px;
+}
+.avi-itinerary-leg {
+	margin-bottom: 20px;
+}

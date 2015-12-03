@@ -1,0 +1,15 @@
+<div class="row-fluid">
+  <div class="well span12">
+    <form class="linked_ticket_form">
+		<div class="control-group">
+          <label>
+            Trip Number
+            <input type="number" class="trip_number span12">
+          </label>
+        </div>
+        <div class="centered">
+        	<button type="submit" class="add_ticket_details btn btn-success btn-large">Go</button>
+      	</div>
+    </form>
+  </div>
+</div>
