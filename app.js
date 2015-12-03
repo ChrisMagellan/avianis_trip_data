@@ -14,8 +14,8 @@
     requests: {
     	getTripData: function(trip_number){
     		return {
-    			//url: 'https://magellan-bi-staging.herokuapp.com/api/v1/trip_data/' + trip_number + '.json',
-    			url: 'https://compass-chrismagellan.c9.io/api/v1/trip_data/' + trip_number + '.json',
+    			url: 'https://magellan-bi-staging.herokuapp.com/api/v1/trip_data/' + trip_number + '.json',
+    			//url: 'https://compass-chrismagellan.c9.io/api/v1/trip_data/' + trip_number + '.json',
           dataType: 'json',
     			type: 'GET',
           headers: {
@@ -24,7 +24,6 @@
     		};
     	},
       updateTicket: function(id, data){
-        console.log(data);
         return {
           url: '/api/v2/tickets/'+ id +'.json',
           dataType: 'json',
@@ -55,10 +54,17 @@
     },
 
     getTripDataDone: function(trip) {
-      this.ticket().customField("custom_field_" + this.departureDateFieldId(), trip.departure_date);
-      this.ticket().customField("custom_field_" + this.arrivalDateFieldId(), trip.arrival_date);
+      var save = false;
+      if (!this.checkDateEqual(trip.departure_date, this.ticket().customField("custom_field_" + this.departureDateFieldId()))) {
+        this.ticket().customField("custom_field_" + this.departureDateFieldId(), trip.departure_date);
+        save = true;
+      }
+      if (!this.checkDateEqual(trip.arrival_date, this.ticket().customField("custom_field_" + this.arrivalDateFieldId()))) {
+        this.ticket().customField("custom_field_" + this.arrivalDateFieldId(), trip.arrival_date);
+        save = true;
+      }
 
-      if (this.ticket().id()) {
+      if (this.ticket().id() && save) {
         this.ajax('updateTicket',
                   this.ticket().id(),
                   { "ticket": { "custom_fields": [
@@ -122,6 +128,10 @@
       if (_.isUndefined(val))
         return this.$(selector).val();
       return this.$(selector).val(val);
+    },
+
+    checkDateEqual: function(text_date, date_field) {
+      return text_date == moment(date_field).utc().format('YYYY-MM-DD');
     }
   };
 

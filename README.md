@@ -1,14 +1,11 @@
-# App name
+# Avianis Trip Data
 
-[brief description of the app]
+The Avianis Trip Data app pulls trip data from Avianis via Compass to display alongside trip-related tickets. It will also set the departure and arrival date fields automatically.
 
 ### The following information is displayed:
 
-* info1
-* info2
-* info3
-
-Please submit bug reports to [Insert Link](). Pull requests are welcome.
-
-### Screenshot(s):
-[put your screenshots down here.]
+* Aircraft/Tail Number
+* Operator
+* Client
+* Itinerary
+* Passengers

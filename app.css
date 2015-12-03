@@ -1,6 +1,9 @@
 .avi-trip-number {
 	line-height: 40%;
 }
+.avi-trip-number a {
+	color: inherit;
+}
 .avi-aircraft {
 	font-size: 150%;
 }
@@ -16,4 +19,8 @@
 }
 .avi-itinerary-leg {
 	margin-bottom: 20px;
+}
+.avi-itinerary-label {
+	font-style: italic;
+	text-decoration: underline;
 }
