@@ -24,6 +24,16 @@
       "name": "arrival_date_field",
       "type": "text",
       "required": true
+    },
+    {
+      "name": "avianis_account_field",
+      "type": "text",
+      "required": true
+    },
+    {
+      "name": "trip_routing_field",
+      "type": "text",
+      "required": true
     }
   ],
   "defaultLocale": "en",

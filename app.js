@@ -14,8 +14,8 @@
     requests: {
     	getTripData: function(trip_number){
     		return {
-    			url: 'https://magellan-bi-staging.herokuapp.com/api/v1/trip_data/' + trip_number + '.json',
-    			//url: 'https://compass-chrismagellan.c9.io/api/v1/trip_data/' + trip_number + '.json',
+    			//url: 'https://magellan-bi-staging.herokuapp.com/api/v1/trip_data/' + trip_number + '.json',
+    			url: 'https://compass-chrismagellan.c9.io/api/v1/trip_data/' + trip_number + '.json',
           dataType: 'json',
     			type: 'GET',
           headers: {
@@ -63,13 +63,19 @@
         this.ticket().customField("custom_field_" + this.arrivalDateFieldId(), trip.arrival_date);
         save = true;
       }
+      if (this.ticket().customField("custom_field_" + this.avianisAccountFieldId()) != trip.account)
+        save = true;
+      if (this.ticket().customField("custom_field_" + this.tripRoutingFieldId()) != trip.routing_formatted)
+        save = true;
 
       if (this.ticket().id() && save) {
         this.ajax('updateTicket',
                   this.ticket().id(),
                   { "ticket": { "custom_fields": [
                     { "id": this.departureDateFieldId(), "value": trip.departure_date },
-                    { "id": this.arrivalDateFieldId(), "value": trip.arrival_date }
+                    { "id": this.arrivalDateFieldId(), "value": trip.arrival_date },
+                    { "id": this.avianisAccountFieldId(), "value": trip.account },
+                    { "id": this.tripRoutingFieldId(), "value": trip.routing_formatted }
                  ]}});
       }
 
@@ -97,17 +103,20 @@
     tripNumber: function() {
       return this.ticket().customField("custom_field_" + this.tripNumberFieldId());
     },
-
     tripNumberFieldId: function() {
       return this.setting('trip_number_field');
     },
-
     departureDateFieldId: function() {
       return this.setting('departure_date_field');
     },
-
     arrivalDateFieldId: function() {
       return this.setting('arrival_date_field');
+    },
+    avianisAccountFieldId: function() {
+      return this.setting('avianis_account_field');
+    },
+    tripRoutingFieldId: function() {
+      return this.setting('trip_routing_field');
     },
 
     APIToken: function() {
